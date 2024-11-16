@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        google()
+    }
+}
+
+plugins {
+    alias(libs.plugins.kotlin.android)
+}
+
+apply plugin: "com.android.application"
+
+android {
+    namespace = "com.minionguyjpro.graphicalbuttonapp"
+    compileSdkVersion(35)
+
+    defaultConfig {
+        applicationId = "com.minionguyjpro.graphicalbuttonapp"
+        minSdkVersion(21)
+        targetSdkVersion(35)
+        vectorDrawables.useSupportLibrary = true
+        versionName = "1.0"
+        versionCode = 1
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'riscv64'
+            debugSymbolLevel = "FULL"
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    lintOptions {
+        disable "Instantiatable"
+    }
+    kotlinOptions {
+        jvmTarget = '21'
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+    google()
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.constraintlayout
+}
